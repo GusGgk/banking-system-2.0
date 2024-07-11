@@ -1,0 +1,78 @@
+MAIN GOAL
+understand how functions work in Python
+
+ROUTE
+STAGE 1 - IN-DEPTH STUDY ON functions
+
+WHAT ARE FUNCTIONS?
+Function is a block of code identified by a name and can receive a list of parameters, these parameters may or may not have default values.
+Using functions makes the code more readable and allows code reuse.
+Programming based on functions is the same as saying that we are programming in a structured way.
+#def is used to inform that the name of the function is _____
+def display_message():
+ print("Hello world")
+
+def display_message_2(name):
+ print(f"Welcome {name}!")
+
+def display_message_3(name= "Anonymous"):
+ print(f"Welcome {name}!")
+
+display_message()
+display_message_2("Gustavo")
+display_message_3()
+display_message_3(name="Malu")
+
+RETURNING VALUES
+To return a value, we use the reserved word return.
+Every Python function returns None by default.
+Unlike other programming languages, in Python a function can return more than one value.
+
+def calculate_total(numbers):
+ return sum(numbers)
+
+def returns_predecessor_and_successor(number):
+ predecessor = number - 1
+ successor = number + 1
+
+ return predecessor, successor
+
+calculate_total([10, 20, 34]) #64
+returns_predecessor_and_successor(10) # (9, 11)
+
+print(calculate_total([10, 20, 34]))
+print(returns_predecessor_and_successor(10))
+#returns in tuple
+
+GROUPING NOMINEES
+Functions can also be called using arguments named in the form chabve=value
+def save_car(make, model, year, license plate):
+ #save car in database...
+ print(f"Car inserted successfully! {brand}/{model}/{year}/{plate}")
+
+#EVERYONE WORKS
+save_car("Fiat", "Palio", 1999, "ABC-1234")
+save_car(brand="Fiat", model="Palio", year=1999, license plate="ABC-1234")
+save_car(**{"brand": "Fiat", "model": "Palio", "year": 1999, "plate": "ABC-1234"})
+
+#car inserted successfully! Fiat/Plaio/1999/ABC-1234
+
+ARGS AND KWARGS
+We can combine mandatory parameters with args and kwargs. When these are defined (*args and **kwargs), the method receives the values ​​as tuple and dictionary respectively
+
+def display_poem(extension_date, *args, **kwargs):
+ text = "\n".join(args)
+ meta_data = "\n".join([f"{key.title()}: {value}" for key, value in kwargs.items()])
+ message = f"{ext_data}\n\n{text}\n\n{meta_data}"
+ print(message)
+
+display_poem(
+ #extenso_data
+ "Thursday, July 10, 2024",
+ #*args
+ "Zen of Python",
+ "Beautiful is better than ugly.",
+ #** kwargs
+ author = "Tim Peters",
+ year=1999
+)

@@ -1,0 +1,78 @@
+OBJETIVO GERAL
+entender como funcionam as funções em PYthon
+
+PERCURSO
+ETAPA 1 - ESTUDO APROFUNDADO SOBRE funções
+
+OQUE SAO FUNÇÕES?
+Função é um bloco de codigo identificado por um nome e pode receber um lista de parâmetros, esses parâmetros podem ou não ter valores padrões.
+Usar funções torna o codigo mais legivel e possibilita o reaproveitamento de codigo.
+Programar baseado em funções, é o mesmo que dizer que estamos programando de maneira estruturada.
+#def serve para informar que o nome da função é _____
+def exibir_mensagem():
+    print("Olá mundo")
+
+def exibir_mensagem_2(nome):
+    print(f"Seja bem vindo {nome}!")
+
+def exibir_mensagem_3(nome= "Anônimo"):
+    print(f"Seja bem vindo {nome}!")
+
+exibir_mensagem()
+exibir_mensagem_2("Gustavo")
+exibir_mensagem_3()
+exibir_mensagem_3(nome="Malu")
+
+RETORNANDO VALORES 
+para retornar um valor, utilizamos a palavra reservada return.
+Toda função Python retorna None por padrao.
+Diferente de outras linguagens de programação, em Python uma função pode retornar mais de um valor.
+
+def calcular_total(numeros):
+    return sum(numeros)
+
+def retorna_antecessor_e_sucessor(numero):
+    antecessor = numero - 1
+    sucessor = numero + 1
+
+    return antecessor, sucessor
+
+calcular_total([10, 20, 34])  #64
+retorna_antecessor_e_sucessor(10) # (9, 11)
+
+print(calcular_total([10, 20, 34]))
+print(retorna_antecessor_e_sucessor(10))
+#retorna em tupla
+
+AGRUPANDO NOMEADOS
+Funções tambem podem ser chamadas usando argumentos nomeados da forma chabve=valor
+def salvar_carro(marca, modelo, ano, placa):
+    #salva carro no banco de dados...
+    print(f"Carro inserido com sucesso! {marca}/{modelo}/{ano}/{placa}")
+
+#TODOS FUNCIONAM
+salvar_carro("Fiat", "Palio", 1999, "ABC-1234")
+salvar_carro(marca="Fiat", modelo="Palio", ano=1999, placa="ABC-1234")
+salvar_carro(**{"marca": "Fiat", "modelo": "Palio", "ano": 1999, "placa": "ABC-1234"})
+
+#carro inserido com sucesso! Fiat/Plaio/1999/ABC-1234
+
+ARGS E KWARGS
+Podemos combinar parametros obrigatorios com args e kwargs. Quando esses são definidos (*args e **kwargs), o metodo recebe os valores como tupla e dicionario respectivamente
+
+def exibir_poema(data_extenso, *args, **kwargs):
+    texto = "\n".join(args)
+    meta_dados = "\n".join([f"{chave.title()}: {valor}" for chave, valor in kwargs.items()])
+    mensagem = f"{data_extenso}\n\n{texto}\n\n{meta_dados}"
+    print(mensagem)
+
+exibir_poema(
+    #data_extenso
+    "Quinta-Feira, 10 de Julho de 2024",
+     #*args
+     "Zen of Python",
+     "Beautiful is better than ugly.",
+     #** kwargs
+     autor = "Tim Peters",
+     ano=1999
+)

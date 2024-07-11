@@ -1,0 +1,72 @@
+SPECIAL PARAMETERS
+By default, arguments can be passed to a Python function either by position or explicitly by name.
+For better readability and performance, it makes sense to restrict the way in which arguments can be passed, so a developer need only look at the function definition to determine whether items are passed BY POSITION, BY POSITION AND NAME, or BY NAME.
+
+def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2):
+      -----------    ----------     ----------
+        |                |                |
+        |       Positional or keyword     |
+        |                                 - Keyword only
+         -- Positional only
+
+         
+ONLY BY POSITION
+def create_car(model, year, plate, /, brand, engine, fuel):
+ print(model, year, plate, brand, engine, fuel)
+
+
+create_car("Palio", 1999, "ABC-1234", brand="Fiat", engine="1.0", fuel="Gasoline") #valid
+
+
+# create_car(model="Palio", year=1999. plate="ABC-1234", brand="Fiat", engine="1.0", fuel="Gasoline") #valid
+#invalid
+
+NAME ONLY
+def create_car(*, model, year, plate, brand, engine, fuel):
+ print(model, year, plate, brand, engine, fuel)
+
+create_car(model="Palio", year=1999, license plate="ABC-1234", brand="Fiat", engine="1.0", fuel="gasoline") # valid
+
+#create_car (palio, 1999, abc-1234, brand="Fiat", engine="1.0", fuel="gasoline" ) #invalid
+
+HYBRID MODEL
+def create_car(model, year, license plate, /, *, brand, engine, fuel):
+ print(model, year, plate, brand, engine, fuel)
+
+create_car("Palio", 1999, "ABC-1234", brand="Fiat", engine="2.0", fuel="Gasoline")
+
+FIRST CLASS OBJECTS
+In Python, everything is an object, so functions are also objects, which makes them first-class objects.
+With this we can assign functions to variables, pass them as parameters to functions, use them as values ​​in data structures (lists, tuples, dictionaries, etc.) and use them as return values ​​for a function (closures).
+
+def add(a, b):
+ return a + b
+
+def subtract(a, b):
+ return a - b
+
+def display_result(a, b, function):
+ result = function(a, b)
+ print(f"The result of the operation is = {result}")
+
+display_result(10, 10, add) # The result of the operation 10 + 10 = 20
+display_result(10, 10, subtract) # The result of the operation 10 - 10 = 0
+
+LOCAL SCOPE AND GLOBAL SCOPE
+Python works with local and global scope, within the function block the scope is local.
+Therefore, changes made there to immutable objects will be lost when the method finishes executing.
+To use global objects, we use the global keyword, which informs the interpreter that the variable being manipulated in the local scope is global.
+This is NOT good practice and SHOULD BE AVOIDED.
+
+#GLOBAL SCOPE
+
+salary = 2000
+
+def salary_bonus(bonus):
+ global salary
+ salary += bonus
+ return salary
+
+salary_bonus(500) # 2500
+
+print (salario_bonus(500)) #added 3000 to the one above

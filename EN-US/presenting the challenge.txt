@@ -1,0 +1,33 @@
+Main goal
+Separate existing withdrawal, deposit and add functions into functions. Create two new functions: register user (customer) and register bank account.
+
+Challenge
+We need to make our code more modularized, so we will create functions for existing operations: withdraw, deposit and view history. Furthermore, for 2 of our system we need to create two new functions: create user (bank customer) and create current account version (link with user).
+
+Separation into functions
+we must create functions for all system operations
+To practice everything you learn in this module, each function will have a rule for passing arguments. The return and the way they will be called can be defined by you however you deem best.
+
+Withdraw
+The withdrawal function must receive arguments only by name (keyword only). Suggested arguments: balance, value, statement, limit, number_withdrawals, limit_withdrawals. Return suggestion:
+balance and statement.
+
+Deposit
+The deposit function must receive arguments only by position (positional only). Suggested arguments: balance, value, statement. Return suggestion: balance and statement.
+
+Extract
+The extract function must receive arguments by position and name (positional only and keyword only). Positional arguments: balance, named arguments: extract.
+
+New functions
+we need to create two new functions: create user and create current account. Feel free to add more functions, example: list accounts.
+
+Create user (client)
+The program must store users in a list, a user consists of: name, date of birth, social security number and address. The address is a string with the format: street, number - neighborhood - city/state acronym. Only CPF numbers must be stored. We cannot register 2 users with the same CPF.
+
+Create current account
+The program must store accounts in a list, an account is composed of: agency, account number and user. The account number is sequential, starting from 1. The branch number is fixed: "0001"
+. The user can have more than one account, but one
+account belongs to only one user.
+
+tip
+To link a user to an account, filter the list of users searching for the CPF number provided for each user on the list.S

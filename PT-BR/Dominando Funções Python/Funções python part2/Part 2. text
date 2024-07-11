@@ -1,0 +1,74 @@
+PARAMETROS ESPECIAIS
+Por padrao, argumentos podem ser passados para uma função Python tanto por posição quanto explicitamente pelo nome.
+Para uma melhor legibilidade e desempenho, faz sentido restringir a maneira pelo qual argumentos possam ser passados, assim um desenvolvedor precisa apenas olhar para a definição da função para determinar se os itens sao passados POR POSIÇÃO, POR POSIÇÃO E NOME, OU POR NOME.
+
+def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2):
+      -----------    ----------     ----------
+        |                |                |
+        |       Positional or keyword     |
+        |                                 - Keyword only
+         -- Positional only
+
+         
+APENAS POR POSIÇÃO
+def criar_carro(modelo, ano, placa, /, marca, motor, combustivel):
+    print(modelo, ano, placa, marca, motor, combustivel)
+
+
+criar_carro("Palio", 1999, "ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina") #valido
+
+
+# criar_carro(modelo="Palio",  ano=1999. placa="ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina") #valido
+#invalido
+
+APENAS NOME
+def criar_carro(*, modelo, ano, placa, marca, motor, combustivel):
+    print(modelo, ano, placa, marca, motor, combustivel)
+
+criar_carro(modelo="Palio", ano=1999, placa="ABC-1234", marca="Fiat", motor="1.0", combustivel="gasolina") # valido
+
+#criar_carro(palio, 1999, abc-1234, marca="Fiat", motor="1.0", combustivel="gasolina" ) #invalido
+
+MODELO HIBRIDO
+def criar_carro(modelo, ano, placa, /, *, marca, motor, combustivel):
+    print(modelo, ano, placa, marca, motor, combustivel)
+
+criar_carro("Palio", 1999, "ABC-1234", marca="Fiat", motor="2.0", combustivel="Gasolina")
+
+OBJETOS DE PRIMEIRA CLASSE
+Em python tudo é objeto, dessa forma funções tambem sao objetos o que as tornam objetos de primeira classe.
+Com isso podemos atribuir funções a varaiveis, passa-las como parametro para funções, usa-las como valores em estruturas de dados(listas, tuplas, dicionarios, etc) e usar como valor de retorno para uma função (closures).
+
+def somar(a, b):
+    return a + b
+
+def subtrair(a, b):
+    return a - b
+
+def exibir_resultado(a, b, funcao):
+    resultado = funcao(a, b)
+    print(f"O resultado da operação é = {resultado}")
+
+exibir_resultado(10, 10, somar) # O resultado da operação 10 + 10 = 20
+exibir_resultado(10, 10, subtrair) # O resultado da operação 10 - 10 = 0
+
+ESCOPO LOCAL E ESCOPO GLOBAL
+Python trabalha com escopo local e global, dentro do bloco da função o escopo é local. 
+Portanto, alterações ali feitas em objetos imutaveis serao perdidas quando o metodo terminar de ser executado.
+Para usar objetos globais utilizamos a palavra-chave global, que informa ao interpretador que a varável que esta sendo manipulada no escopo local é global
+Essa NAO é uma boa pratica e DEVE SER EVITADA.
+
+#ESCOPO GLOBAL
+
+salario = 2000
+
+def salario_bonus(bonus):
+    global salario
+    salario += bonus
+    return salario
+
+salario_bonus(500) # 2500
+
+print (salario_bonus(500)) #somou com o de cima 3000
+
+
