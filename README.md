@@ -42,4 +42,4 @@ Understanding project changes | [File](https://github.com/GusGgk/banking-system-
 
 ## 🔍 Referências
 - [Digital Innovation One](https://www.dio.me)
-- [Repósitorio da DIO](https://github.com/digitalinnovationone/trilha-python-dio/blob/main/00%20-%20Fundamentos/desafio.py)
+- [Repósitorio da DIO](httpsgithub.comdigitalinnovationonetrilha-python-dio)
